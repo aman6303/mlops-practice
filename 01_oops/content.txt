@@ -1,0 +1,22 @@
+topics covered:
+
+1. class and objects
+2. attributes and methods in class
+3. why python called oops?
+    as all inbult datatypes are objects (everything in python is object)
+
+4. advantages of class and objects
+
+5. small demo project
+6. function vs methods
+7. magic methods or dunder methods
+8. Understanding self
+
+9. we can create attribute ouside the class also
+10. Understanding encapsulation
+11. getter and setter
+12. static method in class
+
+
+
+
