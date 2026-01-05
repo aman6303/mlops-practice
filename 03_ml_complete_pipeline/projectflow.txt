@@ -63,3 +63,19 @@ max_features = params['feature_engineering']['max_features']
 params = load_params('params.yaml')['model_building']
 
 -------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------
+
+dvclive code block:
+1> import dvclive and yaml:
+from dvclive import Live
+import yaml
+2> Add the load_params function and initiate "params" var in main
+3> Add below code block to main:
+with Live(save_dvc_exp=True) as live:
+    live.log_metric('accuracy', accuracy_score(y_test, y_test))
+    live.log_metric('precision', precision_score(y_test, y_test))
+    live.log_metric('recall', recall_score(y_test, y_test))
+
+    live.log_params(params)
