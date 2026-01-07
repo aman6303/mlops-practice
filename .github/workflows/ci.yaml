@@ -1,36 +1,42 @@
-name: CI Workflow
+name: CI for Folder 05
 
 on:
   push:
     branches:
       - main
-  # TRIGGER: Only run this workflow if files in folder 05 change
+    # TRIGGER: Only run this workflow if files in folder 05 change
     paths:
       - '05_ci_using_github_actions/**'
 
 jobs:
-  test:
+  build-and-test:
     runs-on: ubuntu-latest
-
+    
     # CONTEXT: All run commands will execute inside folder 05 automatically
     defaults:
       run:
         working-directory: ./05_ci_using_github_actions
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.9'
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9' 
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pytest streamlit
+      - name: Install Dependencies
+        run: |
+          pip install --upgrade pip
+          # If you have a requirements.txt in folder 05:
+          # pip install -r requirements.txt
+          # If not, install pytest directly for now:
+          pip install pytest
 
-    - name: Run tests
-      run: |
-        pytest _test.py
+      - name: Run Tests
+        # Because of 'defaults' above, this runs inside folder 05
+        run: |
+          echo "Running tests for Folder 05..."
+          # Assuming _test.py contains pytest tests or is a script
+          python _test.py
